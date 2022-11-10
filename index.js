@@ -80,7 +80,7 @@ async function run() {
             res.send(review);
 
         })
-
+        ////review delete
         app.delete('/reviews/:id', async (req, res) => {
 
             const id = req.params.id;
@@ -89,6 +89,16 @@ async function run() {
             const review = await reviewCollection.deleteOne(query);
             console.log(review);
             res.send(review);
+        })
+
+
+
+        /////Add services
+        app.post('/services', async (req, res) => {
+            const service = req.body
+            const result = await serviceCollection.insertOne(service)
+            res.send(result);
+
         })
 
     }
